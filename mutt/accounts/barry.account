@@ -1,0 +1,22 @@
+set my_buser = chris@barry.im
+
+## Receive options.
+set imap_user=$my_buser
+set imap_pass=$my_bpass
+set folder = imaps://$my_buser@imap.gmail.com/
+set spoolfile = +INBOX
+set postponed = +Drafts
+set record = +Sent
+
+## Send options.
+set smtp_url=smtps://$my_buser:$my_bpass@smtp.gmail.com
+set realname='Chris Barry'
+set from=$my_buser
+set hostname="gmail.com"
+set signature=~/.mutt/sigs/gmail.sig
+# Connection options
+set ssl_force_tls = yes
+unset ssl_starttls
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=$my_buser imap_pass=$my_bpass"

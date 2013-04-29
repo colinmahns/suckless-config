@@ -1,0 +1,51 @@
+# Settings for Chris Barry's mutt
+# 2013-04-12
+
+set header_cache = "~/.cache/mutt"
+set imap_check_subscribed
+set imap_keepalive = 300
+unset imap_passive
+set mail_check = 60
+set mbox_type=Maildir
+
+set sort=threads 
+
+## Passwords
+source "gpg -dq ~/.mutt/passwords.gpg |"
+
+## Accounts
+
+# Gmail
+source "~/.mutt/accounts/gmail.account"
+# Here we use the $folder variable that has just been set in the sourced file.
+# We must set it right now otherwise the 'folder' variable will change in the next sourced file.
+folder-hook acebarry@gmail.com 'source ~/.mutt/accounts/gmail.account'
+
+# Barry.im
+source "~/.mutt/accounts/barry.account"
+folder-hook chris@barry.im 'source ~/.mutt/accounts/barry.account'
+
+# Stevens
+source "~/.mutt/accounts/stevens.account"
+folder-hook cbarry@stevens.edu 'source ~/.mutt/accounts/stevens.account'
+
+## Shortcuts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/gmail.account<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/barry.account<enter><change-folder>!<enter>'
+macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.mutt/accounts/stevens.account<enter><change-folder>!<enter>'
+
+# Random settings
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "setlocal spell" -c "?^$"'
+
+# Mail-check preferences
+set timeout=60	#Check for mail every minute
+set mail_check=5
+hdr_order Date: From: Subject:
+
+# For HTML emails
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+alternative_order text/plain text/html
+
+source "~/.mutt/colors/mutt-colors-solarized-dark-16.muttrc"
+source "~/.mutt/pgp"
