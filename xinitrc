@@ -1,5 +1,5 @@
 #!/bin/sh
-#eval "$(gpg-agent --daemon)"
+eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gpg-agent-info )&
 
 # No trackpad tapping
 /usr/bin/synclient MaxTapTime=0
