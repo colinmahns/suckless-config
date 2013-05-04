@@ -1,22 +1,17 @@
 set encoding=utf-8
 set autoindent
-set relativenumber
 syntax on
-setlocal cm=blowfish
-"set colorcolumn=80
+
+if exists("+relativenumber")
+	set relativenumber
+	autocmd InsertEnter * :set number
+	autocmd InsertLeave * :set relativenumber
+else
+	set number
+endif
 
 set background=dark
 set t_Co=256
-"colorscheme solarized
-
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 
 " Moving between tabs
 map <C-t><up> :tabr<cr>
@@ -38,7 +33,7 @@ au FocusLost * silent! wa
 "set foldmethod=marker
 "set foldmarker={,}
 
-" :w!! //MAKES YOU ROOT WHEN YOU FORGET TO sudo BEFORE!!! 
+" :w!! Runs sudo
 cmap w!! %!sudo tee > /dev/null %
 
 " Transparent editing of gpg encrypted files.
@@ -71,5 +66,3 @@ augroup encrypted
  autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
