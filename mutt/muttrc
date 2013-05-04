@@ -11,7 +11,9 @@ set mbox_type=Maildir
 set sort=threads 
 
 ## Passwords
-source "gpg -dq ~/.mutt/passwords.gpg |"
+set my_gpass=`pass mutt/gmail`
+set my_bpass=`pass mutt/barry`
+set my_spass=`pass mutt/stevens`
 
 ## Accounts
 
