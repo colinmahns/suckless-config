@@ -89,3 +89,12 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+if [ -f "${HOME}/.gnugpg/gpg-agent.env" ]; then
+	. ${HOME}/.gnugpg/gpg-agent.env
+	export GPG_AGENT_INFO
+	export SSH_AUTH_SOCK
+fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
