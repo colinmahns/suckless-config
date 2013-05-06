@@ -1,5 +1,5 @@
 #!/bin/sh
-eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gpg-agent-info )&
+eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gnugpg/gpg-agent.env)&
 
 # No trackpad tapping
 /usr/bin/synclient MaxTapTime=0
@@ -22,60 +22,56 @@ feh --bg-scale ~/Pictures/Wallpapers/current&
 
 # Credit to http://en.gentoo-wiki.com/wiki/Dwm#Custom_Status_Bar_1
 
-wifi(){
-      STATUS="X`iwgetid`"
-      if test "$STATUS" != "X" ; then
-        ESSID="`iwgetid |awk -F ":" '{print $2}'|sed -e 's/"//g'`"
-        LINK="`awk '/wlo1:/ {print $3}' /proc/net/wireless |sed -e 's/\.//g'`"
-      echo " $ESSID:$LINK"
-      fi
-    } 
+wifi() {
+STATUS="X`iwgetid`"
+	if test "$STATUS" != "X" ; then
+		ESSID="`iwgetid |awk -F ":" '{print $2}'|sed -e 's/"//g'`"
+		LINK="`awk '/wlo1:/ {print $3}' /proc/net/wireless |sed -e 's/\.//g'`"
+		echo " $ESSID:$LINK"
+	fi
+} 
 
-batt(){
-    PRESENT=`cat /sys/class/power_supply/BAT0/present`
-    if test "$PRESENT" != "0" ; then
-      FULL=`cat /sys/class/power_supply/BAT0/charge_full`
-      CHARGE=`cat /sys/class/power_supply/BAT0/charge_now`
-      STATUS=`cat /sys/class/power_supply/BAT0/status`
-
-      CHARGE=$((${CHARGE}*100/${FULL}))
-      case $STATUS in
-        Full)
-          SIGN="=";;
-        Charging)
-          SIGN="+";;
-        Discharging)
-          SIGN="-";;
-      esac
-      echo " ${CHARGE}${SIGN}"
-    else
-      echo " AC"
-    fi
-    }
+batt() {
+	PRESENT=`cat /sys/class/power_supply/BAT0/present`
+	if test "$PRESENT" != "0" ; then
+		FULL=`cat /sys/class/power_supply/BAT0/charge_full`
+		CHARGE=`cat /sys/class/power_supply/BAT0/charge_now`
+		STATUS=`cat /sys/class/power_supply/BAT0/status`
+		CHARGE=$((${CHARGE}*100/${FULL}))
+		case $STATUS in
+			Full) SIGN="=";;
+			Charging) SIGN="+";;
+			Discharging) SIGN="-";;
+		esac
+	echo " ${CHARGE}${SIGN}"
+	else
+		echo " AC"
+	fi
+	}
 
 # TODO make it only use amixer once
-volume(){
-      STATUS="`amixer get Master |awk '/Mono:/ {print $6}'`"
-      if test "$STATUS" != "[on]" ; then 
+volume() {
+	STATUS="`amixer get Master |awk '/Mono:/ {print $6}'`"
+	if test "$STATUS" != "[on]" ; then 
 		echo " Mute"
-      else
-        echo " `amixer get Master |awk '/Mono:/ {print $4}' | sed -e 's/\[//g'|sed -e 's/%\]//g'`v"
-      fi
-	}
+	else
+		echo " `amixer get Master |awk '/Mono:/ {print $4}' | sed -e 's/\[//g'|sed -e 's/%\]//g'`v"
+	fi
+}
 
 # TODO make it use cmus-remote -Q only once
 cmusstats(){
-      if test "X`pgrep cmus`" != "X" ; then 
-        TIME="`cmus-remote -Q |awk '/duration/ {print $2}'`"
-        CURR="`cmus-remote -Q |awk '/position/ {print $2}'`"
-        ARTIST="`cmus-remote -Q |sed -ne '/artist/s/tag artist //pg'`"
-        TITLE="`cmus-remote -Q |sed -ne '/title/s/tag title //pg'`"
-        echo "$TITLE ($ARTIST) $CURR/$TIME"
-      fi
-    }
+	if test "X`pgrep cmus`" != "X" ; then 
+		TIME="`cmus-remote -Q |awk '/duration/ {print $2}'`"
+		CURR="`cmus-remote -Q |awk '/position/ {print $2}'`"
+		ARTIST="`cmus-remote -Q |sed -ne '/artist/s/tag artist //pg'`"
+		TITLE="`cmus-remote -Q |sed -ne '/title/s/tag title //pg'`"
+		echo "$TITLE ($ARTIST) $CURR/$TIME"
+	fi
+	}
 
 while true; do
-  xsetroot -name "`cmusstats``wifi``volume``batt` `date '+%a %F / %T'`"
-  sleep 1
+	xsetroot -name "`cmusstats``wifi``volume``batt` `date '+%a %F / %T'`"
+	sleep 1
 done &
 exec /usr/bin/dwm
