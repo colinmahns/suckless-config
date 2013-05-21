@@ -1,7 +1,5 @@
 # Put aliases here!
 # set some to run in background automatically using &
-MCDIR="$HOME/Documents/Other/minecraft.jar"
-alias minecraft='java -Xmx1024M -Xms512M -cp ${MCDIR} net.minecraft.LauncherFrame &'
 alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -11,6 +9,8 @@ alias ..='cd ..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+# Send to a pastebin site with, $ cat [file] |sprunge
+#alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
