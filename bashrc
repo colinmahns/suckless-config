@@ -37,8 +37,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Enable gpg-agent
-if [ -f "${HOME}/.gnugpg/gpg-agent.env" ]; then
-	. ${HOME}/.gnugpg/gpg-agent.env
+if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
+	. ${HOME}/.gnupg/gpg-agent.env
 	export GPG_AGENT_INFO
 	export SSH_AUTH_SOCK
 fi

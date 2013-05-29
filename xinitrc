@@ -1,5 +1,5 @@
 #!/bin/sh
-eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gnugpg/gpg-agent.env)&
+eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gnupg/gpg-agent.env)&
 
 # No trackpad tapping
 /usr/bin/synclient MaxTapTime=0
@@ -78,7 +78,7 @@ screenlock(){
 	}
 
 while true; do
-	xsetroot -name "`screenlock` `cmusstats``wifi``volume` `batt` `date '+%a %F / %T'`"
+	xsetroot -name "`screenlock``cmusstats``wifi``volume``batt` `date '+%a %F / %T'`"
 	sleep 1
 done &
 exec /usr/bin/dwm
