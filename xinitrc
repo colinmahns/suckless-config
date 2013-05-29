@@ -55,7 +55,7 @@ volume() {
 	if test "$STATUS" != "[on]" ; then 
 		echo " Mute"
 	else
-		echo " `amixer get Master |awk '/Mono:/ {print $4}' | sed -e 's/\[//g'|sed -e 's/%\]//g'`v"
+		echo " `amixer get Master |awk '/Mono:/ {print $4}' | sed -e 's/\[//g'|sed -e 's/%\]//g'`%"
 	fi
 }
 
@@ -70,8 +70,15 @@ cmusstats(){
 	fi
 	}
 
+# Determines if the screen will not lock
+screenlock(){
+	if test "`pgrep xautolock`" == "" ; then
+		echo "NO SLEEP"
+	fi
+	}
+
 while true; do
-	xsetroot -name "`cmusstats``wifi``volume``batt` `date '+%a %F / %T'`"
+	xsetroot -name "`screenlock` `cmusstats``wifi``volume` `batt` `date '+%a %F / %T'`"
 	sleep 1
 done &
 exec /usr/bin/dwm
