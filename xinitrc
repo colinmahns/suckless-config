@@ -12,13 +12,16 @@ amixer -q set Master mute
 amixer -q set Master 0
 
 # Autolock after 10 minutes
-xautolock -time 10 -locker slock&
+xautolock -time 10 -locker slock -corners ----&
 
 # Libnotify
 dunst&
 
 # Set background
 feh --bg-scale ~/Pictures/Wallpapers/current&
+
+# Music
+mpd&
 
 # Credit to http://en.gentoo-wiki.com/wiki/Dwm#Custom_Status_Bar_1
 
@@ -59,17 +62,6 @@ volume() {
 	fi
 }
 
-# TODO make it use cmus-remote -Q only once
-cmusstats(){
-	if test "X`pgrep cmus`" != "X" ; then 
-		TIME="`cmus-remote -Q |awk '/duration/ {print $2}'`"
-		CURR="`cmus-remote -Q |awk '/position/ {print $2}'`"
-		ARTIST="`cmus-remote -Q |sed -ne '/artist/s/tag artist //pg'`"
-		TITLE="`cmus-remote -Q |sed -ne '/title/s/tag title //pg'`"
-		echo "$TITLE ($ARTIST) $CURR/$TIME"
-	fi
-	}
-
 # Determines if the screen will not lock
 screenlock(){
 	if test "`pgrep xautolock`" == "" ; then
@@ -78,7 +70,7 @@ screenlock(){
 	}
 
 while true; do
-	xsetroot -name "`screenlock``cmusstats``wifi``volume``batt` `date '+%a %F / %T'`"
+	xsetroot -name "`screenlock``wifi``volume``batt` `date '+%a %F / %T'`"
 	sleep 1
 done &
 exec /usr/bin/dwm
