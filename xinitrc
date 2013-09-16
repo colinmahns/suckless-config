@@ -26,4 +26,7 @@ mpd&
 # Status bar
 dwmstatus&
 
+# Who needs f.lux?
+redshift -c ~/.redshift&
+
 exec /usr/bin/dwm

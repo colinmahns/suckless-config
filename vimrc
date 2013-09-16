@@ -36,6 +36,9 @@ au FocusLost * silent! wa
 " :w!! Runs sudo
 cmap w!! %!sudo tee > /dev/null %
 
+" Open markdown files with proper syntax higlighting
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
 augroup encrypted

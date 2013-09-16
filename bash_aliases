@@ -11,6 +11,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 # Send to a pastebin site with, $ cat [file] |sprunge
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
+alias unmount='umount'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

@@ -7,8 +7,12 @@ set imap_keepalive = 300
 unset imap_passive
 set mail_check = 60
 set mbox_type=Maildir
-
 set sort=threads 
+set sig_on_top = yes
+#my_header="X-PGP-Key: http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x894ACDEA4D604E51"
+
+# Hide some stuff
+set user_agent=no
 
 ## Passwords
 set my_gpass=`pass mutt/gmail`
@@ -48,6 +52,10 @@ hdr_order Date: From: Subject:
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
+
+# Forward attachments with email
+set mime_forward=yes
+set mime_forward_rest=yes
 
 source "~/.mutt/colors/mutt-colors-solarized-dark-16.muttrc"
 source "~/.mutt/pgp"

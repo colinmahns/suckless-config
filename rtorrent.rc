@@ -1,6 +1,8 @@
 # rtorrent config file
 # http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html
 
+session = ~/.watch/session
+
 max_peers = 100
 max_peers_seed = 50
 max_uploads = 15

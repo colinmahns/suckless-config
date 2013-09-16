@@ -15,6 +15,8 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 export EDITOR=vim
 
+export TZ="America/New_York"
+
 # Mac colors
 export CLICOLOR=1
 
