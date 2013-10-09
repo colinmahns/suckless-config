@@ -1,0 +1,7 @@
+; Global settings
+[redshift]
+location-provider=manual
+
+[manual]
+lat=40.745251
+lon=-74.027926

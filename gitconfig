@@ -1,3 +1,5 @@
 [user]
 	email = chris@barry.im
 	name = Chris Barry
+[push]
+	default = simple

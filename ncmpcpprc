@@ -1,0 +1,9 @@
+# Configuration file for ncmpcpp
+
+mpd_host = "music.barry.im"
+mpd_music_dir = "~/Music"
+playlist_separate_albums = "yes"
+playlist_display_mode = "columns" (classic/columns)
+user_interface = "alternative"
+startup_screen = "2"
+#execute_on_song_change = "notify-send `ncmpcpp --now-playing {%t} {%b %a}`"
