@@ -5,6 +5,8 @@ set header_cache = "~/.cache/mutt"
 set imap_check_subscribed
 set imap_keepalive = 300
 unset imap_passive
+bind index "^" imap-fetch-mail
+
 set mail_check = 60
 set mbox_type=Maildir
 set sort=threads 
@@ -13,6 +15,10 @@ set sig_on_top = yes
 
 # Hide some stuff
 set user_agent=no
+
+# Addresses
+set alias_file = "~/Documents/contacts"
+source $alias_file
 
 ## Passwords
 set my_gpass=`pass mutt/gmail`
