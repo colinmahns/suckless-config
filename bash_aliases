@@ -22,3 +22,20 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --line-number --with-filename --color=auto'
     alias egrep='egrep --line-number --with-filename --color=auto'
 fi
+
+system-update() {
+	# Archlinux
+	if [ -x /usr/bin/pacman ]; then
+		sudo pacman -Syu;
+		return;
+	fi
+
+	# Debian
+	if [ -x /usr/bin/apt-get ]; then
+		sudo apt-get update;
+		sudo apt-get upgrade;
+		return;
+	fi
+
+	echo "No package manager found";
+}
