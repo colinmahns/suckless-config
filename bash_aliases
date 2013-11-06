@@ -13,6 +13,8 @@ alias mv='mv -i'
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 alias unmount='umount'
 
+alias dhcp-kill='sudo dhcpcd -k; sudo dhcpcd'
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -32,9 +34,13 @@ system-update() {
 
 	# Debian
 	if [ -x /usr/bin/apt-get ]; then
-		sudo apt-get update;
-		sudo apt-get upgrade;
+		sudo apt-get update && sudo apt-get upgrade;
 		return;
+	fi
+
+	# Apple
+	if [  -x /usr/sbin/softwareupdate ]; then
+		sudo softwareupdate -i -a
 	fi
 
 	echo "No package manager found";
