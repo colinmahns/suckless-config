@@ -13,9 +13,10 @@ alias mv='mv -i'
 # Send to a pastebin site with, $ cat [file] |sprunge
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 alias unmount='umount'
-alias ifconfig='ip addr'
 alias dhcp-kill='sudo dhcpcd -k; sudo dhcpcd'
 
+# Because I'm too stupid to remember the actual command
+alias ifconfig='ip addr'
 # What I type when I get angry
 alias shutup='sudo !!'
 
