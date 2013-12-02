@@ -6,18 +6,19 @@ arch=('i686' 'x86_64')
 url="https://github.com/chris-barry/dwmstatus"
 license=('MIT')
 depends=('libxext' 'mpd' 'mpc' 'wireless_tools' 'alsa-utils')
-source=("Makefile"
-		"config.mk"
-		"config.h"
-		"dwmstatus.c"
+source=("LICENSE"
+		"Makefile"
 		"README.md"
-		"LICENSE")
-md5sums=('039530812cda162a56e896009e4d12ce'
-         'fb88a23cd9b12809620316fe1908f53a'
-         '931f649b70426d1158801c7beb2b12a5'
-         'a33a0ddbbf0c8b3602f416a66e5395d4'
-         '09e9b951f2c1395597b8a9d6cad5e90f'
-         'cadf2ac6e2ce0a39b445c9928e372290')
+		"config.h"
+		"config.mk"
+		"dwmstatus.c")
+md5sums=('cadf2ac6e2ce0a39b445c9928e372290'
+		'039530812cda162a56e896009e4d12ce'
+		'09e9b951f2c1395597b8a9d6cad5e90f'
+		'41cf325e6b4a3c5390d8b8197fd8dda0'
+		'fb88a23cd9b12809620316fe1908f53a'
+		'2bb93c713acab6fe9dcee8529fd10df0'
+		)
 
 build() {
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk

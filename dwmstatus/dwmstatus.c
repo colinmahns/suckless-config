@@ -71,6 +71,9 @@ get_bat()
 	char* status = malloc(sizeof(char)*12);
 	char  s = '?';
 	FILE* fp = NULL;
+	
+	//char* battery = runcmd("acpi -b | awk \'sub/,/,\"\") {print $3, $4, $5}\'");
+	//return smprintf("[%s], battery);
 
 	if ((fp = fopen(BATT_NOW, "r"))) {
 		fscanf(fp, "%ld\n", &lnum1);
