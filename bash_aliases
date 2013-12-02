@@ -1,8 +1,8 @@
 # Put aliases here!
 # set some to run in background automatically using &
 alias ls='ls --color=auto'
-alias ll='ls -AlF'
-alias la='ls -A'
+alias ll='ls -AlhF'
+alias la='ls -Ah'
 alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ..='cd ..'
@@ -12,13 +12,14 @@ alias cp='cp -i'
 alias mv='mv -i'
 # Send to a pastebin site with, $ cat [file] |sprunge
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
-alias unmount='umount'
 alias dhcp-kill='sudo dhcpcd -k; sudo dhcpcd'
-
-# Because I'm too stupid to remember the actual command
-alias ifconfig='ip addr'
 # What I type when I get angry
 alias shutup='sudo !!'
+
+# Stupid aliases that only exist because I'm too stupid to remember the actual command
+alias unmount='umount'
+alias ifconfig='ip addr'
+alias firefox='iceweasel'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -31,30 +32,30 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 system-update() {
-	# Archlinux
+	# pacman based (Arch Linux, Parabola)
 	if [ -x /usr/bin/pacman ]; then
 		sudo pacman -Syu;
 		return;
 	fi
-	# openSUSE
+	# zypper based (openSUSE)
 	if [ -x /usr/bin/zypper ]; then
 		sudo zypper update;
 		return;
 	fi
 	
-	# Fedora / RHEL
+	# yum based (Fedora, RHEL/CentOS)
 	if [ -x /usr/bin/yum ]; then
 		sudo yum update;
 		return;
 	fi
 
-	# Debian
+	# apt based (Debian, Ubuntu)
 	if [ -x /usr/bin/apt-get ]; then
 		sudo apt-get update && sudo apt-get upgrade;
 		return;
 	fi
 	
-	#OpenWRT
+	# opkg based (OpenWRT, LibreWRT)
 	if [ -x /bin/opkg ]; then
 		sudo opkg update; # not sure if this only refreshes repo, or if it updates as well. The packages don't seem to change much...
 		return;
