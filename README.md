@@ -1,5 +1,5 @@
 # Dotfiles
-These are just dotfiles I use.
+These are Chris' dotfiles, that have been mangled, beaten, and left for dead.
 
 # License
 ISC License, unless otherwise noted.
