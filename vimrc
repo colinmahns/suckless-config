@@ -1,7 +1,7 @@
 set encoding=utf-8
 set autoindent
 syntax on
-
+:imap jk <Esc>
 if exists("+relativenumber")
 	set relativenumber
 	autocmd InsertEnter * :set number
