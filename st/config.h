@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Inconsolata:pixelsize=20:antialias=true:autohint=false";
+static char font[] = "Inconsolata:pixelsize=18:antialias=true:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
@@ -38,7 +38,7 @@ static unsigned int actionfps = 30;
 static unsigned int blinktimeout = 800;
 
 /* TERM value */
-static char termname[] = "st-256color";
+static char termname[] = "screen-256color";
 
 static unsigned int tabspaces = 4;
 

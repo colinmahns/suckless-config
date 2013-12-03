@@ -12,7 +12,8 @@ install=st.install
 source=(http://dl.suckless.org/st/st-$pkgver.tar.gz
 	config.h)
 md5sums=('fa03d702b6d67de395975155c87084e9'
-         'e549263d2db2dc725fa68c17a09de488')
+		 '25f297a6b740ad1759601ecffb91cbd6'
+		 )
 
 build() {
   cd $srcdir/$pkgname-$pkgver
