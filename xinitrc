@@ -18,7 +18,7 @@ xautolock -time 10 -locker slock -corners ----&
 dunst&
 
 # Set background
-feh --bg-scale ~/Pictures/Wallpapers/current&
+feh --bg-scale ~/Pictures/Wallpapers/current.jpg&
 
 # Music
 mpd&
